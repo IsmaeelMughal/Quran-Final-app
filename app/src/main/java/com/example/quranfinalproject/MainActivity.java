@@ -51,9 +51,6 @@ public class MainActivity extends AppCompatActivity {
                 switch (item.getItemId())
                 {
                     case R.id.nav_surah:
-                        System.out.println("\nSURAH------------\n");
-                        Log.d("TAG", "SURAH PRESSED");
-                        Toast.makeText(MainActivity.this, "SURAH PRESSED", Toast.LENGTH_SHORT).show();
                         SurahFragment surahFragment = new SurahFragment();
                         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
                         transaction.replace(R.id.layoutMainActivity, surahFragment);

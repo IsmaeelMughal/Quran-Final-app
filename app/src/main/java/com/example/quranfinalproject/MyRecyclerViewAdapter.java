@@ -1,11 +1,15 @@
 package com.example.quranfinalproject;
 
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.view.GravityCompat;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
@@ -33,6 +37,20 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAd
         holder.textViewNumber.setText(String.valueOf(holder.data.getNumber()));
         holder.textViewEnglishName.setText(holder.data.getEnglishName());
         holder.textViewArabicName.setText(holder.data.getArabicName());
+        holder.textViewArabicName.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Bundle bundle = new Bundle();
+                int number = Integer.parseInt(holder.textViewNumber.getText().toString());
+                bundle.putString("type","surah");
+                bundle.putInt("number", number);
+
+                AppCompatActivity activity = (AppCompatActivity) v.getContext();
+                AyatFragment ayatFragment = new AyatFragment();
+                ayatFragment.setArguments(bundle);
+                activity.getSupportFragmentManager().beginTransaction().replace(R.id.layoutMainActivity,ayatFragment).commit();
+            }
+        });
     }
 
     @Override
