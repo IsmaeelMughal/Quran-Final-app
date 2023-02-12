@@ -8,6 +8,9 @@ import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.app.Application;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
@@ -33,7 +36,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main2);
-        //loadJson();
 
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -63,48 +65,18 @@ public class MainActivity extends AppCompatActivity {
                         break;
 
                     case R.id.nav_git:
-                        System.out.println("GITHUB");
+                        Uri webpage = Uri.parse("https://github.com/IsmaeelMughal/Quran-Final-app/commits/master");
+                        Intent intent = new Intent(Intent.ACTION_VIEW, webpage);
+                        startActivity(intent);
                         break;
 
                     case R.id.nav_exit:
-                        System.out.println("EXIT");
+                        finish();
+                        System.exit(0);
                         break;
-
-                    default:
-                        Toast.makeText(getApplicationContext(), "AAAAAAAAAAAAAA", Toast.LENGTH_LONG).show();
                 }
                 return true;
             }
         });
-    }
-
-    private void loadJson()
-    {
-        try {
-            // load JSON
-            InputStream inputStream = getAssets().open("QuranMetaData.json");
-            int size = inputStream.available();
-            byte[] buffer = new byte[size];
-            inputStream.read(buffer);
-            inputStream.close();
-
-            // fetch JSON
-            String json;
-            int max;
-            json = new String(buffer, StandardCharsets.UTF_8);
-            JSONArray jsonArray = new JSONArray(json);
-            max = jsonArray.length();
-
-            for (int i = 0; i < max; i++)
-            {
-                JSONObject jsonObject = jsonArray.getJSONObject(i);
-                String t = jsonObject.getString("text");
-                Log.d("JSON","TEXT:"+t);
-            }
-        }
-        catch (Exception e)
-        {
-            Log.d("JSON", "ERROR: "+e);
-        }
     }
 }
