@@ -8,6 +8,7 @@
     tools:openDrawer="start"
     tools:context=".MainActivity">
 
+
     <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
@@ -16,10 +17,18 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/toolbar"
-            app:title="Holy-Quran Final Project"
+            app:title="Quran Final Project"
             app:titleTextColor="@color/cardview_light_background"
             android:background="@color/cardview_dark_background"
             />
+
+        <LinearLayout
+            android:id="@+id/layoutMainActivity"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="55dp"
+            android:orientation="vertical" />
+
     </RelativeLayout>
 
     <com.google.android.material.navigation.NavigationView
@@ -28,14 +37,9 @@
         android:layout_height="match_parent"
         android:layout_width="wrap_content"
         app:headerLayout="@layout/header"
-        app:menu="@menu/menu_main"/>
+        app:menu="@menu/menu_main"
+        tools:ignore="MissingConstraints" />
 
-    <LinearLayout
-        android:id="@+id/layoutMainActivity"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="55dp"
-        android:orientation="vertical" />
 
 
 </androidx.drawerlayout.widget.DrawerLayout>

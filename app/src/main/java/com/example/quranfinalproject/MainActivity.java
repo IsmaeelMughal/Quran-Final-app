@@ -4,11 +4,14 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import com.google.android.material.navigation.NavigationView;
 
@@ -48,7 +51,14 @@ public class MainActivity extends AppCompatActivity {
                 switch (item.getItemId())
                 {
                     case R.id.nav_surah:
-                        System.out.println("SURAH------------");
+                        System.out.println("\nSURAH------------\n");
+                        Log.d("TAG", "SURAH PRESSED");
+                        Toast.makeText(MainActivity.this, "SURAH PRESSED", Toast.LENGTH_SHORT).show();
+                        SurahFragment surahFragment = new SurahFragment();
+                        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+                        transaction.replace(R.id.layoutMainActivity, surahFragment);
+                        transaction.commit();
+                        drawerLayout.closeDrawer(GravityCompat.START);
                         break;
 
                     case R.id.nav_parah:
@@ -62,6 +72,9 @@ public class MainActivity extends AppCompatActivity {
                     case R.id.nav_exit:
                         System.out.println("EXIT");
                         break;
+
+                    default:
+                        Toast.makeText(getApplicationContext(), "AAAAAAAAAAAAAA", Toast.LENGTH_LONG).show();
                 }
                 return true;
             }
