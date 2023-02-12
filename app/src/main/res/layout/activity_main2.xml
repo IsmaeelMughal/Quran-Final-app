@@ -20,7 +20,6 @@
             app:titleTextColor="@color/cardview_light_background"
             android:background="@color/cardview_dark_background"
             />
-
     </RelativeLayout>
 
     <com.google.android.material.navigation.NavigationView
@@ -30,6 +29,13 @@
         android:layout_width="wrap_content"
         app:headerLayout="@layout/header"
         app:menu="@menu/menu_main"/>
+
+    <LinearLayout
+        android:id="@+id/layoutMainActivity"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="55dp"
+        android:orientation="vertical" />
 
 
 </androidx.drawerlayout.widget.DrawerLayout>
