@@ -17,9 +17,12 @@ import java.util.List;
 public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAdapter.MyVH>{
 
     List<ItemDetails> items;
+    String type;
 
-    public MyRecyclerViewAdapter(List<ItemDetails> items) {
+    public MyRecyclerViewAdapter(List<ItemDetails> items, String type)
+    {
         this.items = items;
+        this.type = type;
     }
 
 
@@ -42,7 +45,7 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAd
             public void onClick(View v) {
                 Bundle bundle = new Bundle();
                 int number = Integer.parseInt(holder.textViewNumber.getText().toString());
-                bundle.putString("type","surah");
+                bundle.putString("type",type);
                 bundle.putInt("number", number);
 
                 AppCompatActivity activity = (AppCompatActivity) v.getContext();

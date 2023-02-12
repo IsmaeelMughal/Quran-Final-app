@@ -43,7 +43,7 @@ public class SurahFragment extends Fragment {
         recyclerView.setHasFixedSize(true);
         layoutManager = new LinearLayoutManager(getContext());
         recyclerView.setLayoutManager(layoutManager);
-        adapter = new MyRecyclerViewAdapter(items);
+        adapter = new MyRecyclerViewAdapter(items,"surah");
         recyclerView.setAdapter(adapter);
 
         return view;

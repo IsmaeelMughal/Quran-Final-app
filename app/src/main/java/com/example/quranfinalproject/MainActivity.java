@@ -61,7 +61,11 @@ public class MainActivity extends AppCompatActivity {
                         break;
 
                     case R.id.nav_parah:
-                        System.out.println("PARAH+++++++++++++");
+                        ParahFragment parahFragment = new ParahFragment();
+                        FragmentTransaction parahTransaction = getSupportFragmentManager().beginTransaction();
+                        parahTransaction.replace(R.id.layoutMainActivity, parahFragment);
+                        parahTransaction.commit();
+                        drawerLayout.closeDrawer(GravityCompat.START);
                         break;
 
                     case R.id.nav_git:
